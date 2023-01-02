@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Portfolio Manager</title>
+
+  <script src="app.js" type="module" defer></script>
+  <script src="js/dialog.js" type="module" defer></script>
+  <script src="js/control.js" type="module" defer></script>
+  <script src="js/render.js" type="module" defer></script>
+  <script src="js/BrowserLocalStorage.js" type="module" defer></script>
+  <script src="js/currentPortfolio.js" type="module" defer></script>
+  <script src="js/currentStockCards.js" type="module" defer></script>
+  <script src="js/googleChart.js" type="module" defer></script>
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dialog.css">
+  <link rel="stylesheet" href="style.css">
+  </link>
+  <script src="https://kit.fontawesome.com/2155740522.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="title">Portfolio Tracker</header>
+
+    <section id="control-section">
+        <div class="input-field">
+        <div class="stock-input-block"><input class="stock-input" type="text" id="stock-ticker"
+            placeholder="Stock Ticker..."></div>
+        <div class="stock-input-block"><input class="stock-input" type="text" id="entry-price" data-type="currency"
+            placeholder="Entry Price"></div>
+        <div class="stock-input-block"><input class="stock-input" type="text" id="number-shares"
+            placeholder="Share Number"></div>
+        <button id="submit-stock">+</button>
+
+        </div>
+
+        <div class="index-chart">
+            <div class="chart--SPY">
+            <span>S&P 500 ETF (SPY)</span>
+            <div id="Google-chart--SPY"></div>
+            </div>
+            <div class="chart--QQQ">
+            <span>NASDAQ 100 (QQQ)</span>
+            <div id="Google-chart--QQQ"></div>
+            </div>
+        </div>
+
+        <div class="control-section-buttons">
+        <button id="edit-all-stock"><i class="fas fa-tools"></i></button>
+        <button id="delete-all-stock"><i class="fas fa-trash-alt"></i></button>
+        </div>
+
+
+    </section>
+
+  <section id="portfolio-section">
+    <table id="portfolio-table">
+      <thead>
+        <tr id="table-header-row">
+          <th class="th-place-holder hide-it"></th>
+          <th class="th-sort-header th-sort-pending" data-column="ticker">Ticker</th>
+          <th class="th-sort-header th-sort-pending" data-column="shares">Shares</th>
+          <th class="th-sort-header th-sort-pending" data-column="entry">Cost Basis</th>
+          <th class="th-sort-header th-sort-pending" data-column="latestPrice">Market Price</th>
+          <th class="th-sort-header th-sort-pending" data-column="totalPaid">Paid Value</th>
+          <th class="th-sort-header th-sort-pending" data-column="marketValue">Market Value</th>
+          <th class="th-sort-header th-sort-pending" data-column="changePercent">Daily %</th>
+          <th class="th-sort-header th-sort-pending" data-column="change">Daily PnL</th>
+          <th class="th-sort-header th-sort-pending" data-column="overallGain">Overall Gain</th>
+          <th class="th-sort-header th-sort-pending" data-column="overallGainPercent">Overall Gain %</th>
+          <th class="th-sort-header th-sort-pending" data-column="weight">Weight %</th>
+          <th class="th-place-holder hide-it"></th>
+        </tr>
+      </thead>
+    </table>
+    <div class="portfolio-overview">
+      <div class="portfolio-overview-metrics">
+        <span>Daily PnL:</span>
+        <span class="portfolio-daily-change">Loading...</span>
+      </div>
+      <div class="portfolio-overview-metrics">
+        <span>Daily %:</span>
+        <span class="portfolio-daily-changePercent">Loading...</span>
+      </div>
+      <div class="portfolio-overview-metrics">
+        <span>Portfolio PnL: $</span>
+        <span class="portfolio-change">Loading...</span>
+      </div>
+      <div class="portfolio-overview-metrics">
+        <span>Portfolio %:</span>
+        <span class="portfolio-changePercent">Loading...</span>
+      </div>
+      <div class="portfolio-overview-metrics">
+        <span>Portfolio Value: $</span>
+        <span class="portfolio-value">Loading...</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="stock-card-section">
+    <div class="stock-card-header">Watch List</div>
+
+    <div class="stock-card-adding">+</i>
+    </div>
+
+
+  </section>
+
+</body>

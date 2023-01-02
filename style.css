@@ -1,0 +1,487 @@
+body {
+    font-family: "Nunito", sans-serif;
+    /* background-color: #f7f7f7; */
+    background: linear-gradient(to right, #d6d6d6, #f7f7f7);
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 8px;
+    box-sizing: border-box;
+}
+  
+header {
+    margin-bottom: 30px;
+}
+  
+.title {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #1a2f38;
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+}
+  
+.stock-card-header {
+    background-color: #1a2f38;
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+    grid-column: 1 / -1;
+}
+  
+.hide-it {
+    display: none;
+}
+  
+/* --- START OF CONTROL section--- */
+  
+#control-section {
+    display: grid;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    grid-template-columns: 250px auto 160px;
+}
+  
+#control-section {
+    margin-bottom: 10px;
+}
+  
+.input-field {
+    border: 2px solid #1a2f38;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    width: 200px;
+    grid-template-columns: 110px 90px;
+    grid-template-rows: repeat(3, 25px);
+    align-content: space-around;
+    justify-self: start;
+    max-height: 110px;
+    align-self: end;
+}
+  
+.stock-input-block {
+    height: 22px;
+    align-items: center;
+}
+  
+.stock-input {
+    width: 90px;
+}
+  
+#submit-stock {
+    font-size: 50px;
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    border-radius: 8%;
+    border-style: none;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    color: #1a2f38;
+    border: 1px solid #1a2f38;
+    position: relative;
+}
+  
+#submit-stock:hover {
+    background-color: #46819b;
+    color: #fff;
+}
+  
+#submit-stock::before {
+    content: "Add stock to your portfolio";
+    display: block;
+    position: absolute;
+    border: 1px solid #1a2f38;
+    color: #1a2f38;
+    border-radius: 10px;
+    font-size: 16px;
+    bottom: 125%;
+    right: -100%;
+    padding: 10px;
+    white-space: nowrap;
+    transform: scale(0);
+    transition: transform 200ms ease-in-out;
+}
+  
+#submit-stock:hover::before {
+    transform: scale(1);
+}
+  
+.index-chart {
+    display: flex;
+    flex-grow: 1;
+    height: 150px;
+    gap: 50px;
+}
+  
+.chart--SPY,
+.chart--QQQ {
+    text-align: center;
+    font-weight: bold;
+}
+  
+#delete-all-stock:active,
+#edit-all-stock:active {
+    transform: scale(0.9);
+}
+  
+#delete-all-stock {
+    height: 40px;
+    width: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #c93636;
+    background-color: #fff;
+    border-radius: 10px;
+    align-content: center;
+    border: 1px solid #c93636;
+    position: relative;
+}
+  
+#delete-all-stock:hover {
+    color: #ec6666;
+    border: 1px solid #ec6666;
+}
+  
+#delete-all-stock::before {
+    content: "Delete your portfolio";
+    display: block;
+    position: absolute;
+    border: 1px solid #c93636;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 16px;
+    bottom: 120%;
+    right: -100%;
+    padding: 10px;
+    white-space: nowrap;
+    transform: scale(0);
+    transition: transform 200ms ease-in-out;
+}
+  
+#delete-all-stock:hover::before {
+    transform: scale(1);
+}
+  
+#edit-all-stock {
+    height: 40px;
+    width: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #46819b;
+    background-color: #fff;
+    border-radius: 10px;
+    align-content: center;
+    border: 1px solid #46819b;
+    position: relative;
+}
+  
+#edit-all-stock:hover {
+    color: #639bb3;
+    border: 1px solid #639bb3;
+}
+  
+#edit-all-stock::before {
+    content: "Edit your portfolio";
+    display: block;
+    position: absolute;
+    border: 1px solid #639bb3;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 16px;
+    bottom: 120%;
+    left: -100%;
+    padding: 10px;
+    white-space: nowrap;
+    transform: scale(0);
+    transition: transform 200ms ease-in-out;
+}
+  
+#edit-all-stock:hover::before {
+    transform: scale(1);
+}
+  
+.control-section-buttons {
+    display: grid;
+    align-self: end;
+    justify-self: end;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+}
+  
+/* --- END OF CONTROL section--- */
+  
+/* --- START OF PORTFOLIO section--- */
+#portfolio-section {
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  
+    justify-content: space-between;
+}
+  
+#portfolio-table {
+    width: 100%;
+}
+  
+#portfolio-table,
+th,
+td {
+    text-align: right;
+    padding-right: 5px;
+    height: 35px;
+    font-weight: bold;
+}
+  
+table {
+    padding-block-start: 0px;
+}
+  
+#portfolio-table {
+    border-top: 3px solid #46819b;
+    border-bottom: 3px solid #46819b;
+}
+  
+#table-header-row,
+.stock-info-row {
+    background-color: #fff;
+}
+  
+#table-header-row {
+    background-color: #1a2f38;
+    color: #ffffff;
+}
+  
+.th-sort-pending,
+.th-sort-header {
+    cursor: pointer;
+}
+  
+.th-sort-asc::before {
+    content: "\25b4";
+}
+  
+.th-sort-desc::before {
+    content: "\25be";
+}
+  
+.th-sort-pending::before {
+    content: "\21C4";
+    margin-right: 2px;
+}
+  
+.indivial-row-btns {
+    background-color: #f7f7f7;
+    text-align: end;
+}
+  
+.edit-btn .fa-edit {
+    color: #46819b;
+    cursor: pointer;
+}
+  
+  .edit-btn .fa-edit:hover {
+    color: #1a2f38;
+}
+  
+.delete-btn {
+    text-align: center;
+}
+  
+.delete-btn .fa-trash-alt {
+    color: #c93636;
+    cursor: pointer;
+}
+  
+.delete-btn .fa-trash-alt:hover {
+    color: #ec6666;
+}
+  
+.tableCellInput {
+    outline: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+  
+.portfolio-overview {
+    background-color: #fff;
+    margin: 30px 0;
+    display: flex;
+    border-top: 3px solid #46819b;
+    border-bottom: 3px solid #46819b;
+}
+  
+.portfolio-overview-metrics {
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #f7f7f7;
+}
+  
+/* --- END OF PORTFOLIO section--- */
+  
+/* --- STOCK CARD section --- */
+  
+#stock-card-section {
+    font-size: 13px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+    gap: 1rem;
+  
+    justify-content: center;
+}
+  
+.stock-card-adding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(#d6d6d6, #f7f7f7);
+    font-size: 200px;
+    color: #1a2f38;
+    cursor: pointer;
+}
+  
+.stock-card-adding:hover {
+    color: #fff;
+    background: linear-gradient(#f7f7f7, #d6d6d6);
+}
+  
+.stock-card-adding:active {
+    transform: scale(0.96);
+}
+  
+.stock-card {
+    display: grid;
+  
+    padding: 1rem;
+    grid-template-rows: 100px 150px, 100px;
+    background-color: #f7f7f7;
+    border: 1px solid black;
+    border-radius: 10px;
+    row-gap: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 250ms ease;
+}
+  
+.stock-card:hover {
+    position: relative;
+    top: -30px;
+    transform: scale(1.1);
+}
+  
+.stock-basics {
+    display: grid;
+    grid-template-rows: 20px 72px;
+    row-gap: 5px;
+}
+  
+.stock-card-title {
+    grid-column: 1 / 3;
+    display: flex;
+}
+  
+.close-stock-card {
+    border: 1px solid #c93636;
+    background-color: #fff;
+    color: #c93636;
+    border-radius: 4px;
+    transform: scale(1.5);
+    display: none;
+    cursor: pointer;
+}
+  
+.stock-card:hover .close-stock-card {
+    display: block;
+}
+  
+.close-stock-card:hover {
+    color: #ec6666;
+    border: 1px solid #ec6666;
+}
+  
+.close-stock-card:active {
+    transform: scale(1.4);
+}
+  
+.stock-company-name {
+    flex-grow: 1;
+    background-color: white;
+    font-size: 18px;
+    height: 20px;
+    font-weight: bold;
+}
+  
+.stock-logo {
+    grid-column: 1 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.stock-logo-img {
+    max-width: 70px;
+    max-height: 70px;
+}
+  
+.stock-last-price {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 24px 24px 24px;
+    font-weight: bold;
+}
+  
+.stock-chart {
+    border: 2px solid #fff;
+}
+  
+.stock-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 25%);
+    line-height: 22px;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 10px;
+}
+  
+.highlight {
+    display: inline-block;
+    padding: 1px;
+    border-radius: 1px solid #fff;
+    justify-self: end;
+}
+  
+.green-price-box {
+    border-radius: 5px;
+    background-color: #3aad5c;
+    color: #fff;
+}
+  
+.red-price-box {
+    border-radius: 5px;
+    background-color: #c93636;
+    color: #fff;
+    font-weight: bold;
+}
+  
+.price-hightlight {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    grid-template-rows: 2fr 1.2fr;
+    justify-content: space-between;
+    column-gap: normal;
+    row-gap: 2px;
+}
