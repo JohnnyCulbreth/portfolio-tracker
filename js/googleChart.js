@@ -11,7 +11,7 @@ function drawChart(ticker, data) {
     legend: "none",
     width: 256,
     height: 130,
-    backgroundColor: "#d6d6d6",
+    backgroundColor: "#d6d6d6"
   };
 
   var chart = new google.visualization.LineChart(
