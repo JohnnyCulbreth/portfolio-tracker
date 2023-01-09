@@ -1,7 +1,6 @@
 import dialog from "./dialog.js";
 
 const key = `pk_fa0fad660f3e4666bd6e82bbaa1b7dba`;
-// Send key to .env^
 
 const fetchStockInfo = async function (stock) {
   try {
